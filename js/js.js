@@ -81,3 +81,11 @@ function funcContact(){
     <p><i class="fab fa-instagram"></i> notdewa</p>
     </div>`
 }
+
+//Menu---------------------------------------------------------------------------------------
+const menuToggle = document.querySelector('.menu-toggle input');
+const nav = document.querySelector('.menu');
+
+menuToggle.addEventListener('click', function(){
+    nav.classList.toggle('tampil');
+})

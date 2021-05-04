@@ -29,8 +29,14 @@
         .border-default{
             border-color: #E9EAEC;
         }
+        .border-yellow{
+            border-color: #FAD02C;
+        }
         .background-default{
             background-color: #E9EAEC;
+        }
+        .background-dark-blue{
+            background-color: #333652;
         }
         .text-header-color{
             color: #FAD02C;
@@ -45,26 +51,66 @@
             color: #333652;
             background-color: #E9EAEC;
         }
+        #menu input{
+            position: absolute;
+            width: 50px;
+            height: 25px;
+            opacity: 0;
+            cursor: pointer;
+            z-index: 2;
+        }
+        #menu span{
+            width: 25px;
+            height: 3px;
+            background-color: #E9EAEC;
+            transition: all 0.5s;
+        }
+        .menu-toggle span:nth-child(2){
+            transform-origin: 0 0;
+        }
+        .menu-toggle span:nth-child(4){
+            transform-origin: 0 100%;
+        }
+        .menu-toggle input:checked ~ span:nth-child(2){
+            transform: rotate(45deg) translate(-1.5px, -1px);
+        }
+        .menu-toggle input:checked ~ span:nth-child(3){
+            transform: scale(0);
+        }
+        .menu-toggle input:checked ~ span:nth-child(4){
+            transform: rotate(-45deg) translate(-1px, 0);
+        }
+        .tampil{
+            transform:translateX(0);
+        }
     </style>
 
     <title>Home</title>
 </head>
-<body>
-    <div class="flex flex-rows-2 h-screen poppins" style="background-color: #333652;">
+<body style="overflow-x: hidden;">
+    <div class="flex flex-rows-2 h-screen poppins background-dark-blue" id="body">
 
         <!-- Gambar di sebelah Kiri -->
         <div class="md:w-1/2 bg-cover bg-center md:flex hidden" style="background-image: url(./picture/back.jpg)"></div>
 
         <!-- Menu dan Penjelasan di sebelah kanan -->
-        <div class="md:w-1/2 flex flex-col">
+        <div class="md:w-1/2 w-full flex flex-col">
 
             <!-- Menu bar -->
-            <div class="md:flex flex-row justify-end text-default hidden">
-                <p class="m-4 p-2 md:mx-auto text-menu rounded" id="profile">Profile</p>
-                <p class="m-4 p-2 md:mx-auto text-menu rounded" id="skill">Skill</p>
-                <p class="m-4 p-2 md:mx-auto text-menu rounded" id="graduation">Graduation</p>
-                <p class="m-4 p-2 md:mx-auto text-menu rounded" id="experience">Experience</p>
-                <p class="m-4 p-2 md:mx-auto text-menu rounded" id="contact">Contact</p>
+            <div class="flex flex-col transform -translate-y-full lg:translate-y-0 border-b-2 border-yellow lg:border-none background-dark-blue w-full md:w-1/2 text-center lg:flex-row text-default absolute transition menu">
+                <p class="mt-12 lg:mt-2 m-2 p-2 text-menu rounded" id="profile">Profile</p>
+                <p class="m-2 p-2 text-menu rounded" id="skill">Skill</p>
+                <p class="m-2 p-2 text-menu rounded" id="graduation">Graduation</p>
+                <p class="m-2 p-2 text-menu rounded" id="experience">Experience</p>
+                <p class="m-2 p-2 text-menu rounded" id="contact">Contact</p>
+            </div>
+            <div class="lg:hidden relative text-default p-5 w-full flex justify-end">
+                <div class="flex flex-col gap-1 menu-toggle" id="menu">
+                    <input type="checkbox" class="transform -translate-x-3 -translate-y-1">   
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
 
             <!-- Penjelasan -->
